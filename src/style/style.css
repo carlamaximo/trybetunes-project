@@ -1,22 +1,22 @@
-.login{
+.login {
   background-color: purple;
+  font-family: Arial;
   height: 80px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.nav{
-  text-decoration: none;
-  padding: 12%;
-  font-size: large;
+.nav {
   color: black;
+  font-size: large;
+  padding: 12%;
+  text-decoration: none;
   justify-content: space-between;
 }
 
-.nome{
+.nome {
   font-size: medium;
   text-align: center;
-  width: 70px;
   border: solid 1px;
+  width: 70px;
   border-radius: 20px;
   padding-top: 2px;
 }
