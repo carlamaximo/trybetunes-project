@@ -1,12 +1,22 @@
 .login{
-  text-align: center;
   background-color: purple;
-  height: 50px;
+  height: 80px;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  align-items: baseline;
 }
 
 .nav{
   text-decoration: none;
-  padding: 4%;
+  padding: 12%;
+  font-size: large;
+  color: black;
+  justify-content: space-between;
+}
+
+.nome{
+  font-size: medium;
+  text-align: center;
+  width: 70px;
+  border: solid 1px;
+  border-radius: 20px;
+  padding-top: 2px;
 }

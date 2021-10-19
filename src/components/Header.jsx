@@ -34,11 +34,17 @@ export default class Header extends Component {
     return (
       <header data-testid="header-component" className="login">
         <section>{carregando && <Carregando />}</section>
-        <section data-testid="header-user-name">{ nomeUsuario }</section>
-        <nav className="nav">
-          <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-          <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
-          <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+        <section data-testid="header-user-name" className="nome">{ nomeUsuario }</section>
+        <nav>
+          <Link to="/search" data-testid="link-to-search" className="nav">Pesquisar</Link>
+          <Link
+            to="/favorites"
+            data-testid="link-to-favorites"
+            className="nav"
+          >
+            Favoritos
+          </Link>
+          <Link to="/profile" data-testid="link-to-profile" className="nav">Perfil</Link>
         </nav>
       </header>);
   }
