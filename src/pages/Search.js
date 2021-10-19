@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 
 export default class Search extends Component {
   render() {
-    return (<div data-testid="page-search"> Minha página de pesquisa </div>);
+    return (
+      <>
+        <Header />
+        <div data-testid="page-search"> Minha página de pesquisa </div>
+      </>
+    );
   }
 }
