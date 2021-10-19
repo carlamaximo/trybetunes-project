@@ -6,16 +6,16 @@
 .nav {
   color: black;
   font-size: large;
-  padding: 12%;
   justify-content: space-between;
+  padding: 12%;
   text-decoration: none;
 }
 
 .nome {
-  font-size: medium;
   border: solid 1px;
-  text-align: center;
   border-radius: 20px;
-  width: 70px;
+  font-size: medium;
   padding-top: 2px;
+  text-align: center;
+  width: 70px;
 }
