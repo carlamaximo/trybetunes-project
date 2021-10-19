@@ -5,3 +5,8 @@
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   align-items: baseline;
 }
+
+.nav{
+  text-decoration: none;
+  padding: 4%;
+}
