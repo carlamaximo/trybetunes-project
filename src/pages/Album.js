@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Carregando from '../components/Carregando';
-import ListaDeMusicas from '../components/ListaDeMusicas';
+import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 
 export default class Album extends Component {
@@ -51,7 +51,7 @@ export default class Album extends Component {
               </p>
               <ul>
                 { musicas.slice(1).map((musica, trackId) => (
-                  <ListaDeMusicas musica={ musica } key={ trackId } />
+                  <MusicCard musica={ musica } key={ trackId } />
                 ))}
               </ul>
             </div>

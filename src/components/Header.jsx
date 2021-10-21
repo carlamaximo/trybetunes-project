@@ -33,7 +33,6 @@ export default class Header extends Component {
     const { carregando, nomeUsuario } = this.state;
     return (
       <header data-testid="header-component" className="login">
-        <section>{carregando && <Carregando />}</section>
         <section data-testid="header-user-name" className="nome">{ nomeUsuario }</section>
         <nav>
           <Link to="/search" data-testid="link-to-search" className="nav">Pesquisar</Link>
@@ -46,6 +45,7 @@ export default class Header extends Component {
           </Link>
           <Link to="/profile" data-testid="link-to-profile" className="nav">Perfil</Link>
         </nav>
+        <section>{carregando && <Carregando />}</section>
       </header>);
   }
 }

@@ -20,6 +20,7 @@ export default class FormularioPesquisa extends Component {
             value={ artistaPesquisado }
             onChange={ lidaComInput }
             className="inputFormularioPesquisa"
+            placeholder="Digite seu artista ou banda preferida"
           />
           <button
             type="button"

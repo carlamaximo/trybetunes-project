@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from '../components/Carregando';
-import CardMusicas from '../components/CardMusicas';
+import CardAlbums from '../components/CardAlbums';
 import FormularioPesquisa from '../components/FormularioPesquisa';
 
 export default class Search extends Component {
@@ -87,7 +87,7 @@ export default class Search extends Component {
 
             <section>
               {albums.map((album) => (
-                <CardMusicas
+                <CardAlbums
                   key={ album.collectionId }
                   nomeArtista={ album.artistName }
                   imagem={ album.artworkUrl100 }
