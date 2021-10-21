@@ -36,7 +36,7 @@ export default class Album extends Component {
         <Header />
         <div data-testid="page-album">
           {(carregando) ? <Carregando /> : (
-            <div data-testid="page-album">
+            <div>
               <h2
                 data-testid="album-name"
                 className="carregando"
