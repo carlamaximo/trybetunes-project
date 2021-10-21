@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from '../components/Carregando';
 import CardMusicas from '../components/CardMusicas';
+import FormularioPesquisa from '../components/FormularioPesquisa';
 
 export default class Search extends Component {
   constructor() {
@@ -13,6 +14,8 @@ export default class Search extends Component {
       carregando: false,
       requisicao: false,
       albums: [],
+      encontrado: '',
+      artista: '',
     };
 
     this.lidaComInput = this.lidaComInput.bind(this);
@@ -32,56 +35,74 @@ export default class Search extends Component {
 
   async lidaComSearchAlbumsAPIs() {
     const { artistaPesquisado } = this.state;
-    this.setState({ carregando: true });
+    this.setState({
+      carregando: true,
+      artista: artistaPesquisado,
+    });
     const colecaoAlbums = await searchAlbumsAPI(artistaPesquisado);
     this.setState({
       artistaPesquisado: '' }, () => {
-      if (searchAlbumsAPI(artistaPesquisado)) {
+      if (colecaoAlbums.length !== 0) {
         this.setState({
           requisicao: true,
           albums: colecaoAlbums,
+          carregando: false,
         });
-      // } else {
-      //   this.setState({ r });
+      } else {
+        this.setState({
+          carregando: false,
+          requisicao: false,
+          encontrado: 'Nenhum álbum foi encontrado',
+        });
       }
     });
   }
 
   render() {
-    const { artistaPesquisado, disabled, carregando, requisicao, albums } = this.state;
+    const {
+      artistaPesquisado,
+      disabled, carregando,
+      requisicao,
+      albums,
+      encontrado,
+      artista,
+    } = this.state;
+
     return (
-      <>
+      <div data-testid="page-search">
         <Header />
-        {(carregando) && <Carregando />}
-        <div data-testid="page-search">
-          <label htmlFor="pesquisaArtista">
-            <input
-              id="pesquisaArtista"
-              data-testid="search-artist-input"
-              value={ artistaPesquisado }
-              onChange={ this.lidaComInput }
-            />
-            <button
-              type="button"
-              data-testid="search-artist-button"
-              disabled={ disabled }
-              onClick={ this.lidaComSearchAlbumsAPIs }
-            >
-              Pesquisar
-            </button>
-          </label>
-          {(requisicao) && albums.map((album) => (
-            <CardMusicas
-              key={ album.artistId }
-              nomeArtista={ album.artistName }
-              imagem={ album.artworkUrl100 }
-              idColecao={ album.collectionId }
-              nomeColecao={ album.collectionName }
-              trackCount={ album.trackCount }
-            />
-          ))}
-        </div>
-      </>
+        { (carregando) ? <Carregando /> : <FormularioPesquisa
+          artistaPesquisado={ artistaPesquisado }
+          lidaComInput={ this.lidaComInput }
+          disabled={ disabled }
+          lidaComSearchAlbumsAPIs={ this.lidaComSearchAlbumsAPIs }
+        />}
+
+        {(requisicao) && (albums.length !== 0) ? (
+          <div>
+            <p>
+              Resultado de álbuns de:
+              {` ${artista}`}
+            </p>
+
+            <section>
+              {albums.map((album) => (
+                <CardMusicas
+                  key={ album.artistId }
+                  chave={ album.artistId }
+                  nomeArtista={ album.artistName }
+                  imagem={ album.artworkUrl100 }
+                  idColecao={ album.collectionId }
+                  nomeColecao={ album.collectionName }
+                  trackCount={ album.trackCount }
+                />
+              ))}
+            </section>
+          </div>
+        ) : (
+          <p>{encontrado}</p>
+        )}
+      </div>
     );
   }
 }
