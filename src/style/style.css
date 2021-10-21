@@ -1,43 +1,92 @@
 .login {
   background-color: purple;
-  height: 80px;
+  display: flex;
+  height: 85px;
+  justify-content: center;
+}
+
+.div-login {
+  background-color: cadetblue;
+}
+
+.inputLogin {
+  border: solid 1px gray;
+  border-radius: 3px;
+  height: 20px;
+  margin-left: -380px;
+  margin-top: 200px;
+  width: 280px;
+}
+
+.botaoLogin {
+  background-color: deeppink;
+  border-radius: 5px;
+  color: black;
+  height: 30px;
+  margin-left: 8px;
+  width: 60px;
 }
 
 .nav {
   color: black;
-  font-size: large;
+  font-size: 30px;
   justify-content: space-between;
-  padding: 12%;
+  padding: 15%;
   text-decoration: none;
 }
 
 .nome {
   border: solid 1px;
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: medium;
+  height: 20px;
+  margin-left: -300px;
+  margin-top: 20px;
   padding-top: 2px;
   text-align: center;
   width: 70px;
 }
 
 .cardAlbum {
-  border: solid 1px;
-  border-radius: 5px;
+  align-content: center;
   display: flex;
   text-decoration: none;
 }
 
 .cardAlbumChildren {
+  align-content: center;
   flex-direction: row;
   justify-content: center;
+  text-decoration: none;
 }
 
 .botao {
-  background-color: chartreuse;
+  background-color: deeppink;
+  border-radius: 5px;
+  color: black;
+  height: 30px;
+  margin-left: 8px;
+  width: 90px;
+}
+
+.inputFormularioPesquisa {
+  border: solid 1px gray;
+  border-radius: 3px;
+  height: 20px;
+  margin-left: 400px;
+  margin-top: 50px;
+  width: 280px;
 }
 
 .carregando {
   display: flex;
   justify-content: center;
   margin-top: 15px;
+}
+
+.div-musicas {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
 }

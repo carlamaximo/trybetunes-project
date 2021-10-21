@@ -37,8 +37,18 @@ export default class Album extends Component {
         <div data-testid="page-album">
           {(carregando) ? <Carregando /> : (
             <div data-testid="page-album">
-              <h2 data-testid="album-name">{ musicas[0].collectionName }</h2>
-              <p data-testid="artist-name">{ musicas[0].artistName }</p>
+              <h2
+                data-testid="album-name"
+                className="carregando"
+              >
+                { musicas[0].collectionName }
+              </h2>
+              <p
+                data-testid="artist-name"
+                className="carregando"
+              >
+                { musicas[0].artistName }
+              </p>
               <ul>
                 { musicas.slice(1).map((musica, trackId) => (
                   <ListaDeMusicas musica={ musica } key={ trackId } />

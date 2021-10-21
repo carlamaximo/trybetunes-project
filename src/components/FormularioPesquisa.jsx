@@ -19,6 +19,7 @@ export default class FormularioPesquisa extends Component {
             data-testid="search-artist-input"
             value={ artistaPesquisado }
             onChange={ lidaComInput }
+            className="inputFormularioPesquisa"
           />
           <button
             type="button"

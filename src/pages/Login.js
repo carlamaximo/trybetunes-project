@@ -46,25 +46,31 @@ export default class Login extends Component {
   render() {
     const { nomeDigitado, disabled, carregando, redirecionar } = this.state;
     return (
-      <div data-testid="page-login" className="login">
+      <div data-testid="page-login">
         {(carregando && <Carregando />)}
         {(redirecionar && <Redirect to="/search" />)}
-        <label htmlFor="inputNome">
-          <input
-            data-testid="login-name-input"
-            value={ nomeDigitado }
-            id="inputNome"
-            onChange={ this.lidaComInput }
-          />
-          <button
-            data-testid="login-submit-button"
-            type="button"
-            disabled={ disabled }
-            onClick={ this.lidaComCreateUser }
-          >
-            Entrar
-          </button>
-        </label>
+        <form className="login">
+          <h1>Bem Vindo ao Trybetunes!</h1>
+          <label htmlFor="inputNome">
+            <input
+              data-testid="login-name-input"
+              value={ nomeDigitado }
+              id="inputNome"
+              onChange={ this.lidaComInput }
+              placeholder="Digite seu usuário"
+              className="inputLogin"
+            />
+            <button
+              data-testid="login-submit-button"
+              type="button"
+              disabled={ disabled }
+              onClick={ this.lidaComCreateUser }
+              className="botaoLogin"
+            >
+              Entrar
+            </button>
+          </label>
+        </form>
       </div>
     );
   }
