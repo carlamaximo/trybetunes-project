@@ -5,14 +5,14 @@ import '../style/style.css';
 
 export default class CardMusicas extends Component {
   render() {
-    const { nomeArtista, imagem, idColecao, nomeColecao, chave } = this.props;
+    const { nomeArtista, imagem, idColecao, nomeColecao } = this.props;
     return (
       <section className="cardAlbum">
         <Link
           to={ `/album/${idColecao}` }
           data-testid={ `link-to-album-${idColecao}` }
           className="cardAlbumChildren"
-          key={ chave }
+          key={ idColecao }
         >
           <img src={ imagem } alt={ nomeArtista } />
           <h3>{ nomeColecao }</h3>
@@ -27,5 +27,4 @@ CardMusicas.propTypes = {
   imagem: PropTypes.string.isRequired,
   idColecao: PropTypes.number.isRequired,
   nomeColecao: PropTypes.string.isRequired,
-  chave: PropTypes.number.isRequired,
 };

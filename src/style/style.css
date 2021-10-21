@@ -35,3 +35,9 @@
 .botao {
   background-color: chartreuse;
 }
+
+.carregando {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}

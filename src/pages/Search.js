@@ -88,8 +88,7 @@ export default class Search extends Component {
             <section>
               {albums.map((album) => (
                 <CardMusicas
-                  key={ album.artistId }
-                  chave={ album.artistId }
+                  key={ album.collectionId }
                   nomeArtista={ album.artistName }
                   imagem={ album.artworkUrl100 }
                   idColecao={ album.collectionId }

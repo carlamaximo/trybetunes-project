@@ -22,7 +22,7 @@ export default class Header extends Component {
   async lidaComGetUser() {
     this.setState({ carregando: true });
     const infoUsuario = await getUser();
-    console.log(getUser());
+
     this.setState({
       carregando: false,
       nomeUsuario: infoUsuario.name,
