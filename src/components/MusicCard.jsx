@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Carregando from './Carregando';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import '../style/style.css';
 
 export default class ListaDeMusicas extends Component {
@@ -10,21 +10,33 @@ export default class ListaDeMusicas extends Component {
     this.state = {
       check: false,
       carregando: false,
+      // musicasSalvas: [],
     };
     this.lidaComInputCheck = this.lidaComInputCheck.bind(this);
+    this.mostraMusicasFav = this.mostraMusicasFav.bind(this);
+  }
+
+  componentDidMount() {
+    this.mostraMusicasFav();
+  }
+
+  async mostraMusicasFav() {
+    const listaMusicasSalvas = await getFavoriteSongs();
+    this.setState({
+      musicasSalvas: listaMusicasSalvas,
+      // checked: { listaMusicasSalvas.some((favorita) => favorita.trackId === music.trackId) }
+    });
   }
 
   async lidaComInputCheck({ target }) {
     console.log(target);
     const { musica } = this.props;
-    // const { name } = target;
 
     this.setState({
       check: true,
       carregando: true,
     });
     await addSong(musica);
-    console.log(await addSong(musica));
     this.setState({ carregando: false });
   }
 
