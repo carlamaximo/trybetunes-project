@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Carregando from '../components/Carregando';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs, addSong, removeSong } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
   constructor(props) {
@@ -11,26 +12,50 @@ export default class Album extends Component {
     this.state = {
       carregando: true,
       musicas: [],
+      favoritas: [],
     };
+
     this.lidaComGetMusics = this.lidaComGetMusics.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.getFavorites = this.getFavorites.bind(this);
   }
 
   componentDidMount() {
     this.lidaComGetMusics();
+    this.getFavorites();
+  }
+
+  async handleClick(value, music) {
+    this.setState({ carregando: true });
+    console.log(value);
+    console.log(music);
+    if (value) {
+      await addSong(music);
+    } else {
+      await removeSong(music);
+    }
+    this.getFavorites();
+  }
+
+  async getFavorites() {
+    const musicasFavoritas = await getFavoriteSongs();
+    this.setState({
+      carregando: false,
+      favoritas: musicasFavoritas,
+    });
   }
 
   async lidaComGetMusics() {
     const { match: { params: { id } } } = this.props;
     const listaDeMusica = await getMusics(id);
-    console.log(listaDeMusica.slice(1));
+    // console.log(listaDeMusica.slice(1));
     this.setState({
-      carregando: false,
       musicas: listaDeMusica,
     });
   }
 
   render() {
-    const { carregando, musicas } = this.state;
+    const { carregando, musicas, favoritas } = this.state;
     return (
       <>
         <Header />
@@ -51,7 +76,14 @@ export default class Album extends Component {
               </p>
               <ul>
                 { musicas.slice(1).map((musica, trackId) => (
-                  <MusicCard musica={ musica } key={ trackId } />
+                  <MusicCard
+                    musica={ musica }
+                    key={ trackId }
+                    checked={
+                      favoritas.some((fav) => fav.trackId === musica.trackId)
+                    }
+                    onChange={ this.handleClick }
+                  />
                 ))}
               </ul>
             </div>

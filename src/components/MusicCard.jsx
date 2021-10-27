@@ -1,44 +1,37 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Carregando from './Carregando';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import '../style/style.css';
 
 export default class ListaDeMusicas extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { checked } = this.props;
     this.state = {
-      check: false,
+      check: checked,
       carregando: false,
-      // musicasSalvas: [],
     };
+
     this.lidaComInputCheck = this.lidaComInputCheck.bind(this);
-    this.mostraMusicasFav = this.mostraMusicasFav.bind(this);
-  }
-
-  componentDidMount() {
-    this.mostraMusicasFav();
-  }
-
-  async mostraMusicasFav() {
-    const listaMusicasSalvas = await getFavoriteSongs();
-    this.setState({
-      musicasSalvas: listaMusicasSalvas,
-      // checked: { listaMusicasSalvas.some((favorita) => favorita.trackId === music.trackId) }
-    });
   }
 
   async lidaComInputCheck({ target }) {
-    console.log(target);
-    const { musica } = this.props;
-
-    this.setState({
-      check: true,
-      carregando: true,
-    });
-    await addSong(musica);
-    this.setState({ carregando: false });
+    const { onChange, musica } = this.props;
+    this.setState({ check: true });
+    onChange(target.checked, musica);
   }
+
+  // async lidaComInputCheck({ target }) {
+  //   console.log(target);
+  //   const { musica } = this.props;
+
+  //   this.setState({
+  //     check: true,
+  //     carregando: true,
+  //   });
+  //   await addSong(musica);
+  //   this.setState({ carregando: false });
+  // }
 
   render() {
     const { musica: { trackName, previewUrl, trackId } } = this.props;
@@ -58,6 +51,7 @@ export default class ListaDeMusicas extends Component {
           {(carregando) && <Carregando />}
           <input
             data-testid={ `checkbox-music-${trackId}` }
+            value={ trackId }
             id="inputFav"
             type="checkbox"
             checked={ check }
