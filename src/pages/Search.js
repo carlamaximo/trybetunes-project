@@ -35,39 +35,50 @@ export default class Search extends Component {
 
   async lidaComSearchAlbumsAPIs() {
     const { artistaPesquisado } = this.state;
+    console.log('artistaPesquisado', artistaPesquisado);
     this.setState({
       carregando: true,
       artista: artistaPesquisado,
     });
-    const colecaoAlbums = await searchAlbumsAPI(artistaPesquisado);
+    const result = await searchAlbumsAPI(artistaPesquisado);
     this.setState({
-      artistaPesquisado: '' }, () => {
-      if (colecaoAlbums.length !== 0) {
-        this.setState({
-          requisicao: true,
-          albums: colecaoAlbums,
-          carregando: false,
-        });
-      } else {
-        this.setState({
-          carregando: false,
-          requisicao: false,
-          encontrado: 'Nenhum álbum foi encontrado',
-        });
-      }
+      albums: result,
+      carregando: false,
+      requisicao: true,
     });
+    // const { artista } = this.state;
+    // const colecaoAlbums = await searchAlbumsAPI(artistaPesquisado);
+    // console.log('colecao albuns', colecaoAlbums);
+    // if (colecaoAlbums.length !== 0) {
+    //   this.setState({
+    //     requisicao: true,
+    //     albums: colecaoAlbums,
+    //     carregando: false,
+    //   });
+    // } else {
+    //   this.setState({
+    //     carregando: false,
+    //     requisicao: false,
+    //     encontrado: 'Nenhum álbum foi encontrado',
+    //   });
+    // }
+  }
+
+  haveResults() {
+    const { albums } = this.state;
+    return albums.length === 0;
   }
 
   render() {
     const {
       artistaPesquisado,
-      disabled, carregando,
+      disabled,
+      carregando,
       requisicao,
       albums,
       encontrado,
       artista,
     } = this.state;
-
     return (
       <div data-testid="page-search" className="search-page">
         <Header />
@@ -78,13 +89,12 @@ export default class Search extends Component {
           lidaComSearchAlbumsAPIs={ this.lidaComSearchAlbumsAPIs }
         />}
 
-        {(requisicao) && (albums.length !== 0) ? (
+        {((requisicao) && (albums.length !== 0)) ? (
           <div>
             <p>
               Resultado de álbuns de:
               {` ${artista}`}
             </p>
-
             <section>
               {albums.map((album) => (
                 <CardAlbums

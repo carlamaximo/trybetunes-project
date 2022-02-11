@@ -120,7 +120,7 @@ nav .conjunto-navs {
   /* border: black 1px double; */
   display: flex;
   justify-content: center;
-  padding-bottom: 50%;
+  padding-bottom: 5%;
   margin-top: 2%;
 }
 
