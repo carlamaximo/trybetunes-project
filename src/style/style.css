@@ -114,18 +114,76 @@ nav .conjunto-navs {
   text-decoration: none;
 }
 
+.nav:hover {
+  color: black;
+}
+
 /* estilização página search */
 .searchbar {
 
   /* border: black 1px double; */
   display: flex;
   justify-content: center;
-  padding-bottom: 5%;
   margin-top: 2%;
+  padding-bottom: 5%;
 }
 
 .search-page {
 
   /* background-image: url('/src/images/papel-de-parede.jpg'); */
   background-image: linear-gradient(to right, #1565c0, #b92b27);
+}
+
+/* estilizando a carbAlbum */
+.cardAlbum {
+  /* border: black 2px double; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  padding: 1%;
+}
+
+.section-cardAlbum {
+  justify-content: center;
+  padding: 1%;
+}
+
+.cardAlbumChildren {
+  text-decoration: none;
+  /* border: rgb(0, 0, 0) 2px double; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: column nowrap;
+  width: 300px;
+}
+
+.img-album {
+  border-radius: 10px;
+  height: 120px;
+  width: 120px;
+}
+
+.nome-album {
+  color: antiquewhite;
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+.img-h3 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.resultado-albuns {
+  align-items: center;
+  color: white;
+  font-size: 1.5em;
+  font-family: cursive;
+  display: flex;
+  justify-content: center;
 }

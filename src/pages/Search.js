@@ -4,6 +4,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from '../components/Carregando';
 import CardAlbums from '../components/CardAlbums';
 import FormularioPesquisa from '../components/FormularioPesquisa';
+import '../style/style.css';
 
 export default class Search extends Component {
   constructor() {
@@ -91,11 +92,11 @@ export default class Search extends Component {
 
         {((requisicao) && (albums.length !== 0)) ? (
           <div>
-            <p>
+            <p className="resultado-albuns">
               Resultado de álbuns de:
               {` ${artista}`}
             </p>
-            <section>
+            <section className="cardAlbum">
               {albums.map((album) => (
                 <CardAlbums
                   key={ album.collectionId }
