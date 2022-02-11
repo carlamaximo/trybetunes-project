@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+// import { TiHeart } from 'react-icons/ti';
+import { BiHeadphone } from 'react-icons/bi';
+import { HiOutlineUser } from 'react-icons/hi';
 import { createUser } from '../services/userAPI';
 import Carregando from '../components/Carregando';
 import '../style/style.css';
@@ -46,12 +49,18 @@ export default class Login extends Component {
   render() {
     const { nomeDigitado, disabled, carregando, redirecionar } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="page-login">
         {(carregando && <Carregando />)}
         {(redirecionar && <Redirect to="/search" />)}
-        <form className="login">
-          <h1>Bem Vindo ao Trybetunes!</h1>
-          <label htmlFor="inputNome">
+        <div className="header-login">
+          <BiHeadphone className="headphone-icon" size={ 70 } />
+          <h1 className="trybetunes">Trybetunes</h1>
+          {/* <TiHeart className="heart-icon" /> */}
+        </div>
+        <div className="div-segunda">
+          <form className="login">
+            <HiOutlineUser className="perfil-icon" size={ 50 } />
+            {/* <label htmlFor="inputNome"> */}
             <input
               data-testid="login-name-input"
               value={ nomeDigitado }
@@ -69,8 +78,9 @@ export default class Login extends Component {
             >
               Entrar
             </button>
-          </label>
-        </form>
+            {/* </label> */}
+          </form>
+        </div>
       </div>
     );
   }

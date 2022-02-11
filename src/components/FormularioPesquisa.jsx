@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { BiSearchAlt } from 'react-icons/bi';
 import '../style/style.css';
 
 export default class FormularioPesquisa extends Component {
@@ -13,13 +14,14 @@ export default class FormularioPesquisa extends Component {
 
     return (
       <div>
-        <label htmlFor="pesquisaArtista">
+        <label htmlFor="pesquisaArtista" className="searchbar">
+          <BiSearchAlt size={ 40 } />
           <input
             id="pesquisaArtista"
             data-testid="search-artist-input"
             value={ artistaPesquisado }
             onChange={ lidaComInput }
-            className="inputFormularioPesquisa"
+            className="inputLogin"
             placeholder="Digite seu artista ou banda preferida"
           />
           <button
@@ -27,7 +29,7 @@ export default class FormularioPesquisa extends Component {
             data-testid="search-artist-button"
             disabled={ disabled }
             onClick={ lidaComSearchAlbumsAPIs }
-            className="botao"
+            className="botaoLogin"
           >
             Pesquisar
           </button>

@@ -32,10 +32,21 @@ export default class Header extends Component {
   render() {
     const { carregando, nomeUsuario } = this.state;
     return (
-      <header data-testid="header-component" className="login">
-        <section data-testid="header-user-name" className="nome">{ nomeUsuario }</section>
-        <nav>
-          <Link to="/search" data-testid="link-to-search" className="nav">Pesquisar</Link>
+      <header data-testid="header-component" className="header">
+        <section
+          data-testid="header-user-name"
+          className="nome-header"
+        >
+          { nomeUsuario }
+        </section>
+        <nav className="conjunto-navs">
+          <Link
+            to="/search"
+            data-testid="link-to-search"
+            className="nav"
+          >
+            Pesquisar
+          </Link>
           <Link
             to="/favorites"
             data-testid="link-to-favorites"
@@ -43,7 +54,13 @@ export default class Header extends Component {
           >
             Favoritos
           </Link>
-          <Link to="/profile" data-testid="link-to-profile" className="nav">Perfil</Link>
+          <Link
+            to="/profile"
+            data-testid="link-to-profile"
+            className="nav"
+          >
+            Perfil
+          </Link>
         </nav>
         <section>{carregando && <Carregando />}</section>
       </header>);

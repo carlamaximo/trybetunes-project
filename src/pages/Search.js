@@ -69,7 +69,7 @@ export default class Search extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="search-page">
         <Header />
         { (carregando) ? <Carregando /> : <FormularioPesquisa
           artistaPesquisado={ artistaPesquisado }
