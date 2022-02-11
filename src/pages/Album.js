@@ -5,6 +5,7 @@ import Carregando from '../components/Carregando';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import { getFavoriteSongs, addSong, removeSong } from '../services/favoriteSongsAPI';
+import '../style/style.css';
 
 export default class Album extends Component {
   constructor(props) {
@@ -59,18 +60,18 @@ export default class Album extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-album">
+        <div data-testid="page-album" className="page-album">
           {(carregando) ? <Carregando /> : (
             <div>
               <h2
                 data-testid="album-name"
-                className="carregando"
+                className="album-name"
               >
                 { musicas[0].collectionName }
               </h2>
               <p
                 data-testid="artist-name"
-                className="carregando"
+                className="artist-name"
               >
                 { musicas[0].artistName }
               </p>

@@ -92,7 +92,7 @@ h1 .carregando {
   background-image: linear-gradient(to right, #b92b27, #1565c0);
   display: flex;
   justify-content: space-between;
-  padding: 3%;
+  padding: 2%;
 }
 
 .nome-header {
@@ -108,10 +108,11 @@ nav .conjunto-navs {
 .nav {
   font-family: Spicy Rice , cursive;
   color: antiquewhite;
-  font-size: 1.6em;
+  font-size: 1.3em;
   justify-content: space-between;
-  padding: 28%;
+  padding: 10%;
   text-decoration: none;
+  margin-left: 40%;
 }
 
 .nav:hover {
@@ -186,4 +187,43 @@ nav .conjunto-navs {
   font-family: cursive;
   display: flex;
   justify-content: center;
+}
+
+/* estilizando pagina de musicas */
+.page-album {
+  background-image: linear-gradient(to right, #1565c0, #b92b27);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+
+.div-musicas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  /* border: black 2px double; */
+  border-radius: 100px;
+  margin: 4%;
+}
+
+.reproducao {
+  margin-top: 4%;
+}
+
+.inputFav {
+  margin-top: 15%;
+}
+
+.favorita {
+
+}
+
+.album-name {
+  color: black;
+}
+
+.artist-name {
+  text-align: center;
 }

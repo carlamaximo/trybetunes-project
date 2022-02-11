@@ -41,12 +41,17 @@ export default class ListaDeMusicas extends Component {
       <div className="div-musicas">
         <h4>{ trackName }</h4>
         {/* <img src={ artworkUrl30 } alt={ trackName } /> */}
-        <audio data-testid="audio-component" src={ previewUrl } controls>
+        <audio
+          data-testid="audio-component"
+          src={ previewUrl }
+          controls
+          className="reproducao"
+        >
           <track kind="captions" />
           O seu navegador não suporta o elemento
           <code>audio</code>
         </audio>
-        <label htmlFor="inputFav">
+        <label htmlFor="inputFav" className="inputFav">
           Favorita
           {(carregando) && <Carregando />}
           <input
@@ -56,6 +61,7 @@ export default class ListaDeMusicas extends Component {
             type="checkbox"
             checked={ check }
             onChange={ this.lidaComInputCheck }
+            className="favorita"
           />
         </label>
       </div>
